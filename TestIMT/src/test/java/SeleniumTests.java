@@ -13,7 +13,7 @@ public class SeleniumTests {
 
     @Test
     public void testHello() {
-//        setProperty();
+        setProperty();
 
         driver.navigate().to("https://lm.skillbox.cc/qa_tester/module01/");
         driver.findElement(By.name("name")).sendKeys("Алексиос");

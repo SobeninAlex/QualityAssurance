@@ -1,30 +1,37 @@
+import org.checkerframework.checker.units.qual.A;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class SeleniumTests_1 {
-    private final WebDriver driver = new ChromeDriver();
+    private final WebDriver driver = new FirefoxDriver();
 
-    public void openPage() {
+    @Before
+    public void setUp() {
         driver.navigate().to("https://lm.skillbox.cc/qa_tester/module02/homework1/");
+    }
+    @After
+    public void exit() {
+        driver.quit();
     }
 
     @Test
     public void testOpenPage() {
-        openPage();
 
         var actualResult = driver.findElement(By.className("start-screen__text")).getText();
         var expectedResult = "Введите свои данные";
 
-        try {Assert.assertEquals(expectedResult, actualResult);}
-        finally {driver.quit();}
+        Assert.assertEquals(expectedResult, actualResult);
+
     }
 
     @Test
     public  void testCorrectAllData() {
-        openPage();
 
         driver.findElement(By.name("name")).sendKeys("Иванов Иван Иванович");
         driver.findElement(By.name("email")).sendKeys("ivan.ivanov@yandex.ru");
@@ -36,13 +43,13 @@ public class SeleniumTests_1 {
                 "На вашу почту (ivan.ivanov@yandex.ru) отправлено письмо.\n" +
                 "Наш сотрудник свяжется с вами по телефону: +79995554433.";
 
-        try {Assert.assertEquals(expectedResult, actualResult);}
-        finally {driver.quit();}
+        Assert.assertEquals(expectedResult, actualResult);
+
     }
 
     @Test
     public void testDataNoPhone() {
-        openPage();
+
 
         driver.findElement(By.name("name")).sendKeys("Иванов Иван Иванович");
         driver.findElement(By.name("email")).sendKeys("ivan.ivanov@yandex.ru");
@@ -58,7 +65,7 @@ public class SeleniumTests_1 {
 
     @Test
     public void testDataNoEmail() {
-        openPage();
+
 
         driver.findElement(By.name("name")).sendKeys("Иванов Иван Иванович");
         driver.findElement(By.name("phone")).sendKeys("+79995554433");
@@ -74,7 +81,7 @@ public class SeleniumTests_1 {
 
     @Test
     public void testDataNoEmailNoPhone() {
-        openPage();
+
 
         driver.findElement(By.name("name")).sendKeys("Иванов Иван Иванович");
         driver.findElement(By.className("custom-form__button")).click();
@@ -88,7 +95,7 @@ public class SeleniumTests_1 {
 
     @Test
     public void testNoData() {
-        openPage();
+
 
         driver.findElement(By.className("custom-form__button")).click();
 
