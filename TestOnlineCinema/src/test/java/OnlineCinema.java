@@ -16,7 +16,6 @@ public class OnlineCinema {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
-        driver.navigate().to("https://lm.skillbox.cc/qa_tester/module06/register/");
     }
 
     @After
@@ -30,6 +29,7 @@ public class OnlineCinema {
         String email = "skillbox@test.ru";
         String password = "qwerty!123";
 
+        driver.navigate().to("https://lm.skillbox.cc/qa_tester/module06/register/");
         driver.findElement(By.name("name")).sendKeys(name);
         driver.findElement(By.name("email")).sendKeys(email);
         driver.findElement(By.name("password")).sendKeys(password);
@@ -43,6 +43,7 @@ public class OnlineCinema {
 
     @Test
     public void testAllFieldNull() {
+        driver.navigate().to("https://lm.skillbox.cc/qa_tester/module06/register/");
         driver.findElement(By.className("form-submit")).click();
 
         var expectedResult = "Введите имя";
@@ -50,4 +51,30 @@ public class OnlineCinema {
 
         Assert.assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    public void testFindElements() {
+        driver.navigate().to("https://lm.skillbox.cc/qa_tester/module05/practice1/");
+
+        var emailElement = driver.findElement(By.id("email"));
+        var passwordElement = driver.findElement(By.name("password"));
+        var confirmPasswordElement = driver.findElement(By.id("confirm_password"));
+        var buttonElement = driver.findElement(By.tagName("button"));
+        var headerResultElement = driver.findElement(By.tagName("h3"));
+        var email = "test@mail.com";
+        var password = "123";
+
+        emailElement.sendKeys(email);
+        passwordElement.sendKeys(password);
+        confirmPasswordElement.sendKeys(password);
+        buttonElement.click();
+
+        var emailResultElement = driver.findElement(By.linkText(email));
+        var emailResultElement1 = driver.findElement(By.partialLinkText(email));
+
+        Assert.assertEquals("Неверный текст при успешной регистрации", "Спасибо за регистрацию!", headerResultElement.getText());
+        Assert.assertEquals("Неверный email при успешной регистрации", email, emailResultElement.getText());
+    }
+
+
 }
