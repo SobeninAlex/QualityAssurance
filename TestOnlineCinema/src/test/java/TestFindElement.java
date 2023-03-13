@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.List;
 
-public class FindElement {
+public class TestFindElement {
     private WebDriver driver;
 
     @Before
@@ -33,7 +33,7 @@ public class FindElement {
         driver.findElement(By.linkText("Обратная связь"));
         driver.findElement(By.linkText("Предзаказы"));
         driver.findElement(By.className("book-add")).click();
-        var count = driver.findElement(By.id("cart_count"));
+        driver.findElement(By.id("cart_count"));
         driver.findElement(By.id("genres"));
         driver.findElement(By.id("search-input")).sendKeys("Мастер и Маргарита");
 

@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.List;
 
-public class OnlineCinemaNew {
+public class TestOnlineCinemaNew {
     private WebDriver driver;
 
     @Before

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class OnlineCinema {
+public class TestOnlineCinema {
 
     private WebDriver driver;
 
@@ -70,7 +70,7 @@ public class OnlineCinema {
         buttonElement.click();
 
         var emailResultElement = driver.findElement(By.linkText(email));
-        var emailResultElement1 = driver.findElement(By.partialLinkText(email));
+//        var emailResultElement1 = driver.findElement(By.partialLinkText(email));
 
         Assert.assertEquals("Неверный текст при успешной регистрации", "Спасибо за регистрацию!", headerResultElement.getText());
         Assert.assertEquals("Неверный email при успешной регистрации", email, emailResultElement.getText());
