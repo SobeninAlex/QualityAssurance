@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="TestIMT" />
         <module name="TestOnlineCinema" />
+        <module name="TestCatLink" />
       </profile>
     </annotationProcessing>
   </component>

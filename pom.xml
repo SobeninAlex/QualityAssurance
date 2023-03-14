@@ -11,6 +11,7 @@
     <modules>
         <module>TestIMT</module>
         <module>TestOnlineCinema</module>
+        <module>TestCatLink</module>
     </modules>
 
     <properties>
